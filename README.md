@@ -11,18 +11,17 @@ The intent of this repository is to provide the reader with an interactive tool 
 
 ## Environment setup
 
-The examples are intended to run from the repository root in a Python virtual environment. Python 3.9 or newer is recommended.
+The examples are intended to run from the repository root in a conda environment. Python 3.9 or newer is recommended.
 
 ```bash
 git clone https://github.com/yethegod/stochastic-interpolants.git
 cd stochastic-interpolants
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+conda create -n si python=3.9
+conda activate si
+pip install -r requirements.txt
 ```
 
-If `python` is not available on your system, use `python3` in the commands above. For CUDA-specific PyTorch builds, install the appropriate `torch` package for your hardware first, then run `python -m pip install -r requirements.txt`.
+For CUDA-specific PyTorch builds, install the appropriate `torch` package for your hardware first, then run `pip install -r requirements.txt`.
 
 To open the notebooks:
 
