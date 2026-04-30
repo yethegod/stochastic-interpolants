@@ -1,0 +1,8 @@
+torch>=2.0
+torchdiffeq>=0.2.3
+numpy>=1.21
+matplotlib>=3.5
+scipy>=1.7
+jupyter>=1.0
+notebook>=6.5
+ipykernel>=6.0
