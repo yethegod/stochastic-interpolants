@@ -9,9 +9,30 @@ This repository provides a very simple implementation of the stochastic interpol
 
 The intent of this repository is to provide the reader with an interactive tool to understand the mechanisms of the framework, as well as to reproduce any figures in [2].
 
+## Environment setup
+
+The examples are intended to run from the repository root in a Python virtual environment. Python 3.9 or newer is recommended.
+
+```bash
+git clone https://github.com/yethegod/stochastic-interpolants.git
+cd stochastic-interpolants
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+If `python` is not available on your system, use `python3` in the commands above. For CUDA-specific PyTorch builds, install the appropriate `torch` package for your hardware first, then run `python -m pip install -r requirements.txt`.
+
+To open the notebooks:
+
+```bash
+jupyter notebook
+```
+
 A demonstration notebook for defining an interpolant $x_t = I(t, x_0, x_1) + \gamma(t) z$ 
 and learning the associated velocity fields $b(x, t)$ and $s(x, t)$ (the score function) 
-can be found in `notebooks/checker.ipynb`. This can be done with a score function model $s(t,x)$ or a denoiser model $\eta(t,x)$, which is related to the score via: $\eta(t,x) = -\gamma s(t,x)$ for two-sided interpolants and $\eta(t,x) = -\alpha s(t,x)$ for one-sided.
+can be found in the `notebooks/checker-*.ipynb` notebooks. This can be done with a score function model $s(t,x)$ or a denoiser model $\eta(t,x)$, which is related to the score via: $\eta(t,x) = -\gamma s(t,x)$ for two-sided interpolants and $\eta(t,x) = -\alpha s(t,x)$ for one-sided.
 
 Another demonstration is available to do **mirror interpolation** from a dataset to itself, whereby a diffusion can be learned that resamples the distribution! The interpolant here is $x_t = x_0 + \gamma(t) x_1$, where $x_0 \sim \rho_{data}$.
 
@@ -78,4 +99,3 @@ year={2023},
 url={https://openreview.net/forum?id=PqvMRDCJT9t}
 }
 ```
-
