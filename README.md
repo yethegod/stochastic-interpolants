@@ -40,6 +40,23 @@ Another demonstration is available to do **mirror interpolation** from a dataset
 An exploratory script based on exact, analytically computed $v(x, t)$ and $s(x, t)$ for the
 case where $\rho_0$ and $\rho_1$ are both Gaussian mixtures can be found in `interflow/gmm.py` and `notebooks/gmm.ipynb`.
 
+### MNIST SCSI random masking example
+
+`examples/scsi_mnist.py` is a minimal SCSI-style random masking experiment for
+MNIST images. Training batches contain only corrupted observations `(y, mask)`;
+clean images are used to build the corrupted dataset and for held-out image
+restoration metrics.
+
+```bash
+python examples/scsi_mnist.py --mode ode
+python examples/scsi_mnist.py --mode sde
+python examples/scsi_mnist.py --smoke --skip-lpips
+```
+
+The default corruption is pixel-wise random masking with `rho=0.5` and
+observed-pixel noise `sigma_n=0.1`. The script reports PSNR, SSIM, MSE, and
+LPIPS unless `--skip-lpips` is passed.
+
 ODE and SDE integrators (ODE based on `torchdiffeq`, SDE hand-written), as well an interpolant class, are provided in `interflow/stochastic_interpolant.py`
 
 With these tools, we are free to do simulation free generation from either deterministic or stochastic dynamics, with variable level of noise:
